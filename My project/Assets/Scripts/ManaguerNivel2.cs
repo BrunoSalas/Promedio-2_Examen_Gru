@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ManaguerNivel2 : MonoBehaviour
+public class ManaguerNivel2 : MonoBehaviour,ISubject
 {
     public GameObject spawnLeft;
     public GameObject spawnRight;
@@ -15,10 +15,28 @@ public class ManaguerNivel2 : MonoBehaviour
     [HideInInspector]
     public bool right;
     public float distanceSpawn;
-    public TextMeshProUGUI tex;
+    public List<IObserver> observers = new List<IObserver>();
+    public TextMeshProUGUI tex; private static ManaguerNivel2 instance;
     void Start()
     {
 
+    }
+    private void Awake()
+    {
+        instance = this;
+    }
+    public void Attach(IObserver observer)
+    {
+        observers.Add(observer);
+    }
+
+    public void Remove(IObserver observer)
+    {
+        observers.Remove(observer);
+    }
+    public static ManaguerNivel2 GetInstance()
+    {
+        return instance;
     }
 
     // Update is called once per frame
@@ -47,6 +65,5 @@ public class ManaguerNivel2 : MonoBehaviour
             }
 
         }
-        tex.text = $"Distancia Recorrida: {((int)player.distanceTraveled).ToString()}";
     }
 }
