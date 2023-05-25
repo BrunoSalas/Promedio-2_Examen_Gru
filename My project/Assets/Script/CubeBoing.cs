@@ -4,23 +4,44 @@ using UnityEngine;
 
 public class CubeBoing : MonoBehaviour
 {
-    public float speed = 5f;
-    private Rigidbody rb;
-    private Vector3 direction;
+    public float speed = 5f; // Velocidad de movimiento
+    public Vector3 direction = Vector3.right; // Dirección de movimiento inicial
+
+    private Renderer planeRenderer;
+    private Bounds planeBounds;
+    private bool isMovingRight = true;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        direction = new Vector3(1f, 1f, 0f).normalized;
+        planeRenderer = GetComponent<Renderer>();
+        planeBounds = planeRenderer.bounds;
     }
 
     private void Update()
     {
-        rb.velocity = direction * speed;
-    }
+        // Obtener el tamaño del plano en la pantalla
+        float planeWidth = planeBounds.size.x;
+        float planeHeight = planeBounds.size.z;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        direction = Vector3.Reflect(direction, collision.contacts[0].normal);
+        // Calcular los límites de movimiento
+        float xMin = -Camera.main.aspect * Camera.main.orthographicSize + planeWidth / 2f;
+        float xMax = Camera.main.aspect * Camera.main.orthographicSize - planeWidth / 2f;
+        float zMin = -Camera.main.orthographicSize + planeHeight / 2f;
+        float zMax = Camera.main.orthographicSize - planeHeight / 2f;
+
+        // Actualizar la posición del plano
+        transform.Translate(direction * speed * Time.deltaTime);
+
+        // Rebotar el plano cuando alcanza los límites
+        if (transform.position.x <= xMin || transform.position.x >= xMax)
+        {
+            isMovingRight = !isMovingRight;
+            direction.x = isMovingRight ? 1f : -1f;
+        }
+
+        if (transform.position.z <= zMin || transform.position.z >= zMax)
+        {
+            direction.y = -direction.y;
+        }
     }
 }
