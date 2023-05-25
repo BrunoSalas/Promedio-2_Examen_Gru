@@ -11,6 +11,7 @@ public class TravelBTWScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(GetComponent<Button>())
         button = GetComponent<Button>();
        
     }
