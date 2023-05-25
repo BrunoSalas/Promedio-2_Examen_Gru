@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -24,7 +25,9 @@ public class Timer : MonoBehaviour
 
         if (currentTime <= 0f)
         {
+            SceneManager.LoadScene("Nivel 2");
             currentTime = 0f;
+
         }
 
         tiempoText.text = $"Tiempo: {currentTime.ToString("0")}";
