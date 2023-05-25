@@ -11,8 +11,7 @@ public class Spawn : MonoBehaviour
     }
     private void OnEnable()
     {
-            Instantiate(prefabEnemy, transform.parent.position + transform.localPosition, transform.parent.rotation);
-        
+        Instantiate(prefabEnemy, transform.parent.position + transform.localPosition, transform.parent.rotation);
     }
     // Update is called once per frame
     void Update()

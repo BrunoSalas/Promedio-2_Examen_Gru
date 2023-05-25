@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 7152514195770767200}
   - component: {fileID: 7377516684353109088}
   - component: {fileID: 6519902205149762906}
-  - component: {fileID: 795885955171381874}
   - component: {fileID: 3542232042966997280}
+  - component: {fileID: 3160515169252992554}
   m_Layer: 0
   m_Name: Enemigo2
   m_TagString: Untagged
@@ -132,22 +132,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &795885955171381874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8302830993420143743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06ce09d12f6b75946bda5e65dd2dd6d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6123439903225101144, guid: 12dee696024bdc447ae951f5bc1bba86, type: 3}
-  bulletSpawnPoint: {fileID: 2689245553987861055}
-  bulletSpeed: 50
-  fireRate: 1
 --- !u!54 &3542232042966997280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,3 +148,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3160515169252992554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8302830993420143743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa07917c7c481f47a474243f479a919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6123439903225101144, guid: 12dee696024bdc447ae951f5bc1bba86, type: 3}
+  bulletSpawnPoint: {fileID: 2689245553987861055}
+  bulletSpeed: 10
+  fireRate: 1

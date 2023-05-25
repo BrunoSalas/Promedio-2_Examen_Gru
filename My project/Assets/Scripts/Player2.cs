@@ -52,7 +52,7 @@ public class Player2 : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
         }
 
-        Debug.Log("Distancia recorrida: " + distanceTraveled);
+       ManaguerNivel2.GetInstance().tex.text = $"Distancia Recorrida: {((int)distanceTraveled).ToString()}";
     }
 
     // Método para desactivar el movimiento a la izquierda
