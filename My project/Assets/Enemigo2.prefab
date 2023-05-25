@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6123439903225101144, guid: 12dee696024bdc447ae951f5bc1bba86, type: 3}
   bulletSpawnPoint: {fileID: 2689245553987861055}
-  bulletSpeed: 10
+  bulletSpeed: 50
   fireRate: 1
 --- !u!54 &3542232042966997280
 Rigidbody:

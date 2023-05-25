@@ -8,6 +8,8 @@ public class Player2 : MonoBehaviour
     private Rigidbody rb;
     [SerializeField]
     private bool canMoveLeft = true;
+    public float distanceTraveled;
+    private Vector3 lastPosition;
 
     private void Start()
     {
@@ -35,11 +37,22 @@ public class Player2 : MonoBehaviour
         if (verticalInput > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, verticalInput * speed);
+
+            // Calcular la distancia recorrida solo si va en +Z
+            Vector3 currentPosition = transform.position;
+            float distanceZ = currentPosition.z - lastPosition.z;
+            if (distanceZ > 0)
+            {
+                distanceTraveled += distanceZ;
+                lastPosition = currentPosition;
+            }
         }
         else if (verticalInput < 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
         }
+
+        Debug.Log("Distancia recorrida: " + distanceTraveled);
     }
 
     // Método para desactivar el movimiento a la izquierda

@@ -8,9 +8,12 @@ public class Spawn : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Instantiate(prefabEnemy, transform.position, Quaternion.identity);
     }
-
+    private void OnEnable()
+    {
+            Instantiate(prefabEnemy, transform.parent.position + transform.localPosition, transform.parent.rotation);
+        
+    }
     // Update is called once per frame
     void Update()
     {
